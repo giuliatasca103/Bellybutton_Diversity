@@ -50,7 +50,6 @@ function buildMetadata(sample) {
     Object.entries(result).forEach(([key, value]) => {
       panelData.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
-
   });
 }
 
@@ -61,14 +60,14 @@ function buildCharts(sample) { // sample is going to come through as a string so
     // 3. Create a variable that holds the samples array. 
     var sampleData = data.samples;
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    var buildingArray = sampleData.filter(sampleObj => sampleObj.id == sample);
+    var resultArray = sampleData.filter(sampleObj => sampleObj.id == sample);
     //  5. Create a variable that holds the first sample in the array.
-    var current_sample=buildingArray[0] // how to get current_sample to be only for "941"
+    var current_sample=resultArray[0] // how to get current_sample to be only for "941"
           // array.filter => returns an array so you can have to use [0] to get first element
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
     var otu_ids = current_sample.otu_ids;
-    var otu_labelos = current_sample.otu_labels;
+    var otu_labels = current_sample.otu_labels;
     var sample_values = current_sample.sample_values;
 
     //var wFreq = data.metadata.filter(f => f.currentSample.toString() === currentSample)[0];
@@ -160,18 +159,18 @@ function buildCharts(sample) { // sample is going to come through as a string so
 
 function init() {
   // Grab a reference to the dropdown select element
-  var selector = d3.select("#selDataset");
+  var selectorDropdown = d3.select("#selDataset");
 
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
     var sampleNames = data.names;
 
     sampleNames.forEach((sample) => {
-      selector
+      selectorDropdown
         .append("option")
         .text(sample)
         .property("value", sample);
-    });
+    })
 
     // Use the first sample from the list to build the initial plots
     var firstSample = sampleNames[0];
@@ -188,4 +187,4 @@ function optionChanged(newSample) {
 };
 
 // Initialize the dashboard
-init();
+init()
