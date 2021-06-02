@@ -71,7 +71,7 @@ function buildCharts(sample) { // sample is going to come through as a string so
     var otu_labelos = result.otu_labels;
     var sample_values = result.sample_values;
 
-    var wFreq = data.metadata.filter(f => f.sample.toString() === sample)[0];
+    var wFreq = data.metadata.filter(f => f.currentSample.toString() === currentSample)[0];
     wfreq = wreq.wreq;
     console.log("Washing Freq: " + wreq);
 
