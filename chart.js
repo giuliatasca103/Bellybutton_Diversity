@@ -68,8 +68,8 @@ function buildCharts(sample) { // sample is going to come through as a string so
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
     var otu_ids = current_sample.otu_ids;
-    var otu_labelos = result.otu_labels;
-    var sample_values = result.sample_values;
+    var otu_labelos = current_sample.otu_labels;
+    var sample_values = current_sample.sample_values;
 
     //var wFreq = data.metadata.filter(f => f.currentSample.toString() === currentSample)[0];
     // wfreq = wreq.wreq;
@@ -85,7 +85,7 @@ function buildCharts(sample) { // sample is going to come through as a string so
       {
         y: yticks,
         x: sample_values.slice(0, 10).reverse(),
-        text: otu_labelos.slice(0, 10).reverse(),
+        text: otu_labels.slice(0, 10).reverse(),
         type: "bar",
         orientation: "h", 
       } 
