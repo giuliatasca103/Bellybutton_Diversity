@@ -71,10 +71,14 @@ function buildCharts(sample) { // sample is going to come through as a string so
     var otu_labelos = result.otu_labels;
     var sample_values = result.sample_values;
 
+    var wFreq = data.metadata.filter(f => f.id.toString() === id)[0];
+    wfreq = wreq.wreq;
+    console.log("Washing Freq: " + wreq);
+
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-
+    
     var yticks = otu_ids.slice(0, 10).map(otuID => 'OTU &{otuID}').reverse();
     // 8. Create the trace for the bar chart. 
     var barData = [
@@ -95,5 +99,61 @@ function buildCharts(sample) { // sample is going to come through as a string so
     // };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
+
+    // build bubble chart
+    // Deliverable 2
+
+    var bubbleData = [
+      {
+        x: otu_ids,
+        y: sample_values,
+        text: otu_labels,
+        mode: "markers",
+        marker: {
+          size: sample_values,
+          color: otu_ids,
+          colorscale: "Earth"
+        }
+      }
+    ];
+
+    var bubbleLayout = {
+      title: "Bacteria Cultures Per Sample",
+      hovermode: "closest",
+      xaxis: { title: "OTU ID"},
+    };
+
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+
+    var gaugeData = [
+      {
+      domain: { x: [0, 1], y: [0, 1] },
+      value: ,
+      title: {text: 'Belly Button Washing Frequency'},
+      type: "indicator",
+
+      mode: "gauge+number",
+      gauge: { axis: { range: [null, 9] },
+               steps: [
+                 {range: [0, 1], color: "white"},
+                 {range: [1, 2], color: "white"},
+                 {range: [2, 3], color: "white"},
+                 {range: [3, 4], color: "white"},
+                 {range: [4, 5], color: "white"},
+                 {range: [5, 6], color: "white"},
+                 {range: [6, 7], color: "white"},
+                 {range: [7, 8], color: "white"},
+                 {range: [8, 9], color: "white"}
+               ]}
+      }
+    ];
+
+    var gaugeLayout = {
+        width: 700,
+        height: 600,
+        margin: { t: 20, b: 40, l:100, r:100 }
+    };
+
+    Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
 };
