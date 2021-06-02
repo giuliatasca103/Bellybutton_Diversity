@@ -128,7 +128,7 @@ function buildCharts(sample) { // sample is going to come through as a string so
     var gaugeData = [
       {
       domain: { x: [0, 1], y: [0, 1] },
-      value: ,
+      value: wfreq,
       title: {text: 'Belly Button Washing Frequency'},
       type: "indicator",
 
