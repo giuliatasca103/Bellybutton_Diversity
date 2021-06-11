@@ -102,14 +102,14 @@ function buildCharts(sample) { // sample is going to come through as a string so
         mode: "gauge+number",
         gauge: { axis: { range: [null, 9] },
               steps: [
-              {range: [0, 1], color: "white"},
-              {range: [1, 2], color: "white"},
-              {range: [2, 3], color: "white"},
-              {range: [3, 4], color: "white"},
-              {range: [4, 5], color: "white"},
+              {range: [0, 1], color: "red"},
+              {range: [1, 2], color: "orange"},
+              {range: [2, 3], color: "yellow"},
+              {range: [3, 4], color: "green"},
+              {range: [4, 5], color: "blue"},
               {range: [5, 6], color: "white"},
-              {range: [6, 7], color: "white"},
-              {range: [7, 8], color: "white"},
+              {range: [6, 7], color: "black"},
+              {range: [7, 8], color: "grey"},
               {range: [8, 9], color: "white"}
                 ]}
       }
