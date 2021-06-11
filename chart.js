@@ -38,15 +38,15 @@ function buildCharts(sample) { // sample is going to come through as a string so
     var otu_labels = current_sample.otu_labels;
     var sample_values = current_sample.sample_values;
 
-    //var wFreq = data.metadata.filter(f => f.currentSample.toString() === currentSample)[0];
-    // wfreq = wreq.wreq;
-    // console.log("Washing Freq: " + wreq);
+    var wFreq = data.metadata.filter(f => f.id == sample);
+      wfreq = wFreq[0].wfreq;
+      console.log("Washing Freq: " + wfreq);
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
     
-    var yticks = otu_ids.slice(0, 10).map(otuID => 'OTU &{otuID}').reverse();
+    var yticks = otu_ids.slice(0, 10).map(otuID => 'OTU ${otuID}').reverse();
     // 8. Create the trace for the bar chart. 
     var barData = [
       {
