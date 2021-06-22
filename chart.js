@@ -46,7 +46,7 @@ function buildCharts(sample) { // sample is going to come through as a string so
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
     
-    var yticks = otu_ids.slice(0, 10).map(otuID => 'OTU ${otuID}').reverse();
+    var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
     // 8. Create the trace for the bar chart. 
     var barData = [
       {
@@ -156,3 +156,23 @@ function optionChanged(newSample) {
 
 // Initialize the dashboard
 init()
+
+
+// Bar Chart:
+// line 49:  var yticks = otu_ids.slice(0, 10).map(otuID => 'OTU &{otuID}').reverse(); // use backticks, not single ticks and a $ in place of &:  `OTU ${otuID}`
+
+// Guage:
+// Change 41-43 from:
+//     var wFreq = data.metadata.filter(f => f.currentSample.toString() === currentSample)[0];
+//     wfreq = wreq.wreq;
+//     console.log("Washing Freq: " + wreq);
+// to:
+//     var wFreq = data.metadata.filter(f => f.id == sample);
+//     wfreq = wFreq[0].wfreq;
+//     console.log("Washing Freq: " + wfreq);
+
+// The '===' tripped you up.  That is a strict equals, which means the data type must match!
+
+// Don't forget to uncomment the gauge id in your index.htmal file!
+
+// Aside from those minor code changes, all you need to do is some modifications, for instance background color for the index page, etc.
